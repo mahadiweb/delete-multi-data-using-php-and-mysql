@@ -1,0 +1,68 @@
+<html>
+<head>
+<title>Delete Multiple Records In PHP And Mysql</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<h1>Update Multiple Selected Records using PHP Mysql and Jquery Ajax</h1>
+            <form method='post' action=''><?php echo $alert; ?>
+                <p><input type='submit' value='Delete' class="btn btn-danger" name='submit'></p>
+                <table class="table table-bordered">
+                    <tr style='background: whitesmoke;'>
+                        <!-- Check/Uncheck All-->
+                        <th><input type='checkbox' id='checkAll' > Check</th>
+                        <th>ID</th>
+                        <th>Name</th>
+                    </tr>
+
+                    <tr>
+                        <td><input type='checkbox' name='update[]' value='1' ></td>
+                        <td>1</td>
+                        <td>test1</td>
+                    </tr>
+                    <tr>
+                        <td><input type='checkbox' name='update[]' value='2' ></td>
+                        <td>2</td>
+                        <td>test2</td>
+                    </tr>
+                    <tr>
+                        <td><input type='checkbox' name='update[]' value='3' ></td>
+                        <td>3</td>
+                        <td>test3</td>
+                    </tr>
+                    <?php
+                    }
+                    ?>
+                </table>
+            </form>
+
+        <script type="text/javascript">
+            $(document).ready(function(){
+                // Check/Uncheck All
+                $('#checkAll').change(function(){
+                    if($(this).is(':checked')){
+                        $('input[name="update[]"]').prop('checked',true);
+                    }else{
+                        $('input[name="update[]"]').each(function(){
+                            $(this).prop('checked',false);
+                        }); 
+                    }
+                });
+                // Checkbox click
+                $('input[name="update[]"]').click(function(){
+                    var total_checkboxes = $('input[name="update[]"]').length;
+                    var total_checkboxes_checked = $('input[name="update[]"]:checked').length;
+ 
+                    if(total_checkboxes_checked == total_checkboxes){
+                        $('#checkAll').prop('checked',true);
+                    }else{
+                        $('#checkAll').prop('checked',false);
+                    }
+                });
+            });
+        </script>
+</body>
+</html>
